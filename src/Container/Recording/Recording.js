@@ -1,12 +1,12 @@
-import SettingsVoiceIcon from '@material-ui/icons/SettingsVoice';
-import { withStyles } from '@material-ui/styles';
+import SettingsVoiceIcon from "@material-ui/icons/SettingsVoice";
+import { withStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import SpeechRecognition from "react-speech-recognition";
 import { Col, Row } from "reactstrap";
-import { compose } from 'redux';
-import audio from '../../Img/audio.png';
-import styles from './Style';
+import { compose } from "redux";
+import audio from "../../Img/audio.png";
+import styles from "./Style";
 const propTypes = {
 	// Props injected by SpeechRecognition
 	transcript: PropTypes.string,
@@ -20,7 +20,7 @@ const Recording = ({
 	browserSupportsSpeechRecognition,
 	startListening,
 	stopListening,
-	classes
+	classes,
 }) => {
 	const [isRecording, setIsRecording] = useState(false);
 	if (!browserSupportsSpeechRecognition) {
@@ -52,17 +52,19 @@ const Recording = ({
 						like.
 					</p>
 					<div className={classes.wrap}>
-						<span className={classes.btnRecording} onClick={toggleRecording}><SettingsVoiceIcon fontSize="large" /></span>
-						{console.log('transcript:', transcript)
-						}
-						<textarea className={classes.textShow}>{transcript}</textarea>
-						<div><button onClick={resetTranscript}>Reset</button>
+						<span className={classes.btnRecording} onClick={toggleRecording}>
+							<SettingsVoiceIcon fontSize='large' />
+						</span>
+						{console.log("transcript:", transcript)}
+						<textarea value={transcript} className={classes.textShow} />
+						<div>
+							<button onClick={resetTranscript}>Reset</button>
 						</div>
 					</div>
-					<div  className="mt-5">
-					<Col xs={4}>
-					<img className={classes.img} src={audio} alt="audio"></img>
-					</Col>
+					<div className='mt-5'>
+						<Col xs={4}>
+							<img className={classes.img} src={audio} alt='audio'></img>
+						</Col>
 					</div>
 				</Col>
 			</Row>
@@ -74,7 +76,7 @@ Recording.propTypes = propTypes;
 
 export default compose(
 	SpeechRecognition({ autoStart: false }),
-  withStyles(styles)
-)(Recording)
+	withStyles(styles)
+)(Recording);
 
 //export default SpeechRecognition({ autoStart: false })(Recording);
