@@ -7,6 +7,7 @@ import { Col, Row } from "reactstrap";
 import { compose } from "redux";
 import audio from "../../Img/audio.png";
 import styles from "./Style";
+import { Button } from "@material-ui/core";
 const propTypes = {
 	// Props injected by SpeechRecognition
 	transcript: PropTypes.string,
@@ -59,14 +60,18 @@ const Recording = ({
 						<div className={classes.circle} style={{ animationDelay: "1s" }} />
 						<div className={classes.circle} style={{ animationDelay: "2s" }} />
 						<div className={classes.circle} style={{ animationDelay: "3s" }} />
-						{console.log("transcript:", transcript)}
 						<textarea value={transcript} className={classes.textShow} />
 						<div>
-							<button onClick={resetTranscript}>Reset</button>
+							<Button
+								variant='contained'
+								color='primary'
+								onClick={resetTranscript}>
+								Reset
+							</Button>
 						</div>
 					</div>
 					<div className='mt-5'>
-						<Col xs={4}>
+						<Col md={8} xl={6}>
 							<img className={classes.img} src={audio} alt='audio'></img>
 						</Col>
 					</div>

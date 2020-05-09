@@ -21,6 +21,8 @@ const styles = (theme) => ({
 	img: {
 		width: "35vw",
 		height: "auto",
+		width: "100%",
+		height: "auto",
 	},
 	circle: {
 		zIndex: -1,
@@ -42,6 +44,12 @@ const styles = (theme) => ({
 		to: {
 			transform: "scale(2.5, 2.5)",
 			opacity: 0,
+		},
+	},
+	"@media only screen and (max-width: 600px)": {
+		textShow: {
+			width: "70vw",
+			height: "30vh",
 		},
 	},
 });

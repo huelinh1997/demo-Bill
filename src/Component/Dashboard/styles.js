@@ -1,6 +1,7 @@
 const drawerWidth = 240;
 const styles = (theme) => ({
 	wrapper: {
+		width: "100vw",
 		display: "flex",
 		flexDirection: "row",
 		height: "100vh",

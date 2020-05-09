@@ -7,10 +7,13 @@ const Home = () => {
 		<div className='container-fluid my-4'>
 			<h1 className='text-center'>Lorem Ipsum is simply dummy text of</h1>
 			<Row>
-				<Col className='md-5 d-flex justify-content-center'>
-					<img src={Bill1} alt='bill'></img>
+				<Col lg={6} className='d-flex justify-content-center'>
+					<img
+						style={{ maxWidth: "100%", height: "auto" }}
+						src={Bill1}
+						alt='bill'></img>
 				</Col>
-				<Col className='md-7 d-flex flex-column align-self-center'>
+				<Col lg={6} className='d-flex flex-column align-self-center'>
 					<h3>
 						Lorem Ipsum is simply dummy text of the printing and typesetting
 						industry.{" "}
@@ -29,7 +32,7 @@ const Home = () => {
 				</Col>
 			</Row>
 			<Row>
-				<Col className='md-7 d-flex flex-column align-self-center'>
+				<Col lg={6} className='d-flex flex-column align-self-center'>
 					<h3>
 						Lorem Ipsum is simply dummy text of the printing and typesetting
 						industry.{" "}
@@ -46,8 +49,11 @@ const Home = () => {
 						PageMaker including versions of Lorem Ipsum.
 					</p>
 				</Col>
-				<Col className='md-5 d-flex justify-content-center'>
-					<img src={Bill2} alt='bill'></img>
+				<Col lg={6} className='d-flex justify-content-center'>
+					<img
+						src={Bill2}
+						alt='bill'
+						style={{ maxWidth: "100%", height: "auto" }}></img>
 				</Col>
 			</Row>
 		</div>
