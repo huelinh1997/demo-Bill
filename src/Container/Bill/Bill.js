@@ -2,10 +2,19 @@ import React from "react";
 import styles from "./Style";
 import { withStyles } from "@material-ui/styles";
 import { Row, Col } from "reactstrap";
+import Pdf from "react-to-pdf";
+
+const ref = React.createRef();
+const options = {
+	orientation: 'portrait',
+	// unit: 'in',
+	format: [850, 850]
+};
+
 const Bill = ({ classes }) => {
 	return (
-		<div className={`container`}>
-			<div className={classes.bill}>
+		<div className={`container`} >
+			<div className={classes.bill} ref={ref}>
 				<Row className='justify-content-between align-items-center'>
 					<Col xs={4} className='text-center'>
 						<p>Cong ty</p>
@@ -32,6 +41,11 @@ const Bill = ({ classes }) => {
 					</Col>
 				</Row>
 			</div>
+
+			<Pdf targetRef={ref} filename="bill.pdf" options={options}>
+				{({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+			</Pdf>
+
 		</div>
 	);
 };
