@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Style";
 import { withStyles } from "@material-ui/styles";
 import { Row, Col } from "reactstrap";
+import './Bill.css';
 import Pdf from "react-to-pdf";
 
 const ref = React.createRef();
@@ -43,7 +44,7 @@ const Bill = ({ classes }) => {
 			</div>
 
 			<Pdf targetRef={ref} filename="bill.pdf" options={options}>
-				{({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+				{({ toPdf }) => <button className={classes.generatepdf} onClick={toPdf}>Generate Pdf</button>}
 			</Pdf>
 
 		</div>
