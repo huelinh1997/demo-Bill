@@ -55,6 +55,10 @@ const Recording = ({
 						<span className={classes.btnRecording} onClick={toggleRecording}>
 							<SettingsVoiceIcon fontSize='large' />
 						</span>
+						<div className={classes.circle} style={{ animationDelay: "0s" }} />
+						<div className={classes.circle} style={{ animationDelay: "1s" }} />
+						<div className={classes.circle} style={{ animationDelay: "2s" }} />
+						<div className={classes.circle} style={{ animationDelay: "3s" }} />
 						{console.log("transcript:", transcript)}
 						<textarea value={transcript} className={classes.textShow} />
 						<div>
