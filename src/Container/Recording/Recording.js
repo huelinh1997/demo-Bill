@@ -1,29 +1,41 @@
 import SettingsVoiceIcon from "@material-ui/icons/SettingsVoice";
 import { withStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SpeechRecognition from "react-speech-recognition";
 import { Col, Row } from "reactstrap";
 import { compose } from "redux";
 import audio from "../../Img/audio.png";
 import styles from "./Style";
 import { Button } from "@material-ui/core";
+import { connect } from "react-redux";
+import { createBillRequest } from "../../Action/Bill";
+
 const propTypes = {
-	// Props injected by SpeechRecognition
 	transcript: PropTypes.string,
 	resetTranscript: PropTypes.func,
 	browserSupportsSpeechRecognition: PropTypes.bool,
+	createBill: PropTypes.func,
+	isRecording: PropTypes.bool,
 };
 
-const Recording = ({
+function Recording({
 	transcript,
 	resetTranscript,
 	browserSupportsSpeechRecognition,
 	startListening,
 	stopListening,
 	classes,
-}) => {
+	createBill,
+}) {
 	const [isRecording, setIsRecording] = useState(false);
+
+	useEffect(() => {
+		if (isRecording === false && transcript !== "") {
+			createBill();
+		}
+	}, [isRecording, transcript]);
+
 	if (!browserSupportsSpeechRecognition) {
 		stopListening();
 		return null;
@@ -79,13 +91,24 @@ const Recording = ({
 			</Row>
 		</div>
 	);
-};
+}
 
 Recording.propTypes = propTypes;
 
+const mapStateToProps = (state) => {
+	return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		createBill: () => dispatch(createBillRequest()),
+	};
+};
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
 export default compose(
 	SpeechRecognition({ autoStart: false }),
-	withStyles(styles)
+	withStyles(styles),
+	withConnect
 )(Recording);
-
-//export default SpeechRecognition({ autoStart: false })(Recording);

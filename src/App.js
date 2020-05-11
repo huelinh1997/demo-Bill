@@ -1,12 +1,10 @@
-import React from "react";
-import routes from "./Router";
-import { Switch, Route, Router } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/styles";
-import theme from "./Constant/Themes";
+import React from "react";
+import { Route, Router, Switch } from "react-router-dom";
 import history from "./Common/History";
 import Dashboard from "./Component/Dashboard/index";
-import Header from "./Component/Dashboard/Header/index";
-import SideBar from "./Component/Dashboard/Sidebar/index";
+import theme from "./Constant/Themes";
+import routes from "./Router";
 
 const App = () => {
 	const showContentMenu = (routes) => {
