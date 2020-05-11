@@ -27,11 +27,13 @@ function Recording({
 	stopListening,
 	classes,
 	createBill,
+	arr,
 }) {
 	const [isRecording, setIsRecording] = useState(false);
 
 	useEffect(() => {
 		if (isRecording === false && transcript !== "") {
+			console.log("hi");
 			createBill(transcript);
 		}
 	}, [isRecording, transcript]);
@@ -50,7 +52,7 @@ function Recording({
 			setIsRecording(!isRecording);
 		}
 	};
-	//console.log('listening:', listening);
+	console.log("arr:", arr);
 
 	return (
 		<div className={`container-fluid text-center my-4 ${classes.recording}`}>
@@ -81,6 +83,9 @@ function Recording({
 								Reset
 							</Button>
 						</div>
+						<span>{`KQ TEST data gia: ${
+							arr && arr[0] ? arr[0].name : ""
+						}`}</span>
 					</div>
 					<div className='mt-5'>
 						<Col md={8} xl={6}>
@@ -96,7 +101,9 @@ function Recording({
 Recording.propTypes = propTypes;
 
 const mapStateToProps = (state) => {
-	return {};
+	return {
+		arr: state.bill.respone,
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {
