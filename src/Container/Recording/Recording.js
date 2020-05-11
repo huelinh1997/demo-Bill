@@ -32,7 +32,7 @@ function Recording({
 
 	useEffect(() => {
 		if (isRecording === false && transcript !== "") {
-			createBill();
+			createBill(transcript);
 		}
 	}, [isRecording, transcript]);
 
@@ -101,7 +101,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		createBill: () => dispatch(createBillRequest()),
+		createBill: (text) => dispatch(createBillRequest(text)),
 	};
 };
 

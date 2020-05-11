@@ -1,9 +1,9 @@
 import * as billTypes from "./../Constant/Bill";
 import { createBillService } from "../Util/ApiCaller";
 
-export const createBillRequest = () => {
+export const createBillRequest = (text) => {
 	return (dispatch) => {
-		const res = createBillService();
+		const res = createBillService(text);
 		if (res.status === 200) {
 			dispatch(createBill(res.data));
 		} else alert("Không thể kết nối dữ liệu!");
